@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'uri'
 
 module Normalizeurl
@@ -9,6 +7,8 @@ module Normalizeurl
       utm_source utm_medium utm_campaign utm_term utm_content
       utm_name utm_cid utm_reader utm_viz_id utm_pubreferrer utm_swu
       gclid fbclid msclkid
+      ck_subscriber_id
+      ck_subscriber
       _ga _gl
       mc_cid mc_eid
       PHPSESSID JSESSIONID ASPSESSIONID
@@ -37,8 +37,6 @@ module Normalizeurl
       'amazon.co.uk' => %w[keywords tag],
       'ebay.com' => %w[hash],
       'ebay.co.uk' => %w[hash],
-      'twitter.com' => %w[s],
-      'github.com' => %w[tab],
       'stackoverflow.com' => %w[answertab],
       'google.com' => %w[q],
       'google.co.uk' => %w[q],

@@ -1,22 +1,19 @@
-# frozen_string_literal: true
-
 require_relative "lib/normalizeurl/version"
 
 Gem::Specification.new do |spec|
   spec.name = "normalizeurl"
   spec.version = Normalizeurl::VERSION
-  spec.authors = ["Your Name"]
-  spec.email = ["your.email@example.com"]
+  spec.authors = ["Peter Cooper"]
+  spec.email = ["git@peterc.org"]
 
-  spec.summary = "A Ruby library for normalising URLs"
-  spec.description = "Normalises URLs by removing tracking parameters, session IDs, and other extraneous elements whilst preserving important parameters"
-  spec.homepage = "https://github.com/yourusername/normalizeurl"
+  spec.summary = "A Ruby library for normalizing URLs"
+  spec.description = "Normalizes URLs by removing tracking parameters, session IDs, and other extraneous elements whilst preserving important parameters"
+  spec.homepage = "https://github.com/peterc/normalizeurl"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/yourusername/normalizeurl"
-  spec.metadata["changelog_uri"] = "https://github.com/yourusername/normalizeurl/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/peterc/normalizeurl"
 
   # Specify which files should be added to the gem when it is released.
   spec.files = Dir.chdir(__dir__) do

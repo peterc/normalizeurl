@@ -2,6 +2,7 @@ source_url,expected_url,description
 https://EXAMPLE.COM/Path/,https://example.com/Path,Basic hostname lowercasing and trailing slash removal
 https://example.com/page?utm_source=google&utm_medium=cpc&important=keep,https://example.com/page?important=keep,Remove UTM parameters but keep others
 https://youtube.com/watch?v=dQw4w9WgXcQ&utm_source=twitter&t=42,https://youtube.com/watch?t=42&v=dQw4w9WgXcQ,Preserve YouTube video parameters
+https://deno.com/blog/history-of-javascript?ck_subscriber_id=738273647,https://deno.com/blog/history-of-javascript,Remove ConvertKit-specific tracking parameters
 https://example.com/page?PHPSESSID=abc123&content=important,https://example.com/page?content=important,Remove PHP session ID
 https://example.com/page?_ga=GA1.2.123456&fbclid=IwAR123&content=keep,https://example.com/page?content=keep,Remove Google Analytics and Facebook tracking
 https://example.com/page?utm_source=google&utm_medium=cpc,https://example.com/page,Remove all parameters when only tracking params remain
