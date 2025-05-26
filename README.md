@@ -1,12 +1,14 @@
 # NormalizeURL
 
-A Ruby library for normalising URLs by removing tracking parameters, session IDs, and other extraneous elements whilst preserving important parameters. NormalizeURL creates a canonical representation of URLs that can be used for deduplication, caching keys, or comparison purposes.
+A Ruby library for normalizing URLs by removing tracking parameters, session IDs, and other extraneous elements whilst preserving important parameters.
 
-**Important**: The normalised URLs are intended for creating unique representations and may not always be functional URLs. The primary use case is generating consistent, comparable URL strings rather than ensuring the URLs remain clickable.
+NormalizeURL creates a canonical representation of URLs that can be used for deduplication, caching keys, or comparison purposes and was developed initially to deduplicate URLs found in RSS feeds.
+
+**Important**: The normalized URLs are intended for creating unique representations and may not always remain functional URLs.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+For your `Gemfile`:
 
 ```ruby
 gem 'normalizeurl'
@@ -27,7 +29,7 @@ Or install it yourself as:
 ```ruby
 require 'normalizeurl'
 
-# Simple normalisation
+# Simple normalization
 url = "https://example.com/page?utm_source=google&utm_medium=cpc&id=123"
 normalized = Normalizeurl.normalize(url)
 # => "https://example.com/page?id=123"
@@ -40,7 +42,7 @@ normalized = Normalizeurl.normalize(youtube_url)
 
 ### Configuration Options
 
-NormalizeURL accepts various options to customise the normalisation behaviour:
+NormalizeURL accepts various options to customize the normalization behaviour:
 
 ```ruby
 # Default options
@@ -97,7 +99,7 @@ Normalizeurl.normalize(url)
 # => "https://google.com/search?q=ruby+gems"
 ```
 
-#### URL Structure Normalisation
+#### URL Structure Normalization
 
 ```ruby
 # Hostname is lowercased and www is optionally removed
@@ -173,16 +175,6 @@ Normalizeurl.normalize("not-a-url")
 # Nil and empty strings return nil
 Normalizeurl.normalize(nil)
 # => nil
-Normalizeurl.normalize("")
-# => nil
-Normalizeurl.normalize("   ")
-# => nil
-
-# Non-HTTP URLs are returned unchanged
-Normalizeurl.normalize("ftp://example.com/file.txt")
-# => "ftp://example.com/file.txt"
-Normalizeurl.normalize("mailto:user@example.com")
-# => "mailto:user@example.com"
 ```
 
 ## Default Behaviour
@@ -204,6 +196,7 @@ NormalizeURL removes these common tracking parameters by default:
 - `mc_cid`, `mc_eid` (Mailchimp)
 - `s_cid` (Adobe Analytics)
 - `_openstat` (OpenStat)
+- `ck_subscriber_id` (Kit / ConvertKit)
 
 **Session & User IDs:**
 - `PHPSESSID`, `JSESSIONID`, `ASPSESSIONID`
@@ -242,16 +235,6 @@ Certain parameters are automatically preserved for specific domains:
    - Remaining parameters sorted alphabetically
    - Empty query strings removed entirely
 6. **Fragments**: Removed by default (`#section` removed)
-
-## Use Cases
-
-- **URL deduplication**: Create consistent representations for database storage
-- **Cache keys**: Generate reliable cache keys from URLs without tracking noise
-- **Analytics**: Group similar URLs for meaningful reporting
-- **Content management**: Identify duplicate content across different URL variations
-- **Link analysis**: Compare and categorise URLs without tracking parameter interference
-- **SEO analysis**: Canonical URL representation for search engine optimisation tools
-- **Social media**: Clean URLs for sharing without exposing tracking information
 
 ## Advanced Usage
 
