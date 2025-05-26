@@ -4,7 +4,13 @@ A Ruby library for normalizing URLs by removing tracking parameters, session IDs
 
 NormalizeURL 2025 creates a canonical representation of URLs that can be used for deduplication, caching keys, or comparison purposes and was developed initially to deduplicate URLs found in RSS feeds.
 
-**Important**: The normalized URLs are intended for creating unique representations and may not always remain functional URLs.
+> [!IMPORTANT]  
+> The normalized URLs are intended for creating unique representations and may not always remain functional URLs.
+
+> [!NOTE]  
+> The library has such a silly name because RubyGems refused to let me use the available name of 'normalizeurl' due to an ancient gem with a similar name. Rather than putting 'lol' or 'poo' on the end, you get 2025 instead.
+
+**Important**: 
 
 ## Installation
 

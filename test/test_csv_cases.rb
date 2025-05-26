@@ -16,7 +16,7 @@ class TestCsvCases < Minitest::Test
       next if source_url.nil? || source_url.strip.empty?
       next if expected_url.nil? || expected_url.strip.empty?
 
-      actual = Normalizeurl.normalize(source_url.strip)
+      actual = Normalizeurl2025.normalize(source_url.strip)
       assert_equal expected_url.strip, actual, "Failed: #{description}"
     end
   end
