@@ -1,8 +1,8 @@
-# NormalizeURL
+# NormalizeURL 2025
 
 A Ruby library for normalizing URLs by removing tracking parameters, session IDs, and other extraneous elements whilst preserving important parameters.
 
-NormalizeURL creates a canonical representation of URLs that can be used for deduplication, caching keys, or comparison purposes and was developed initially to deduplicate URLs found in RSS feeds.
+NormalizeURL 2025 creates a canonical representation of URLs that can be used for deduplication, caching keys, or comparison purposes and was developed initially to deduplicate URLs found in RSS feeds.
 
 **Important**: The normalized URLs are intended for creating unique representations and may not always remain functional URLs.
 
@@ -11,7 +11,7 @@ NormalizeURL creates a canonical representation of URLs that can be used for ded
 For your `Gemfile`:
 
 ```ruby
-gem 'normalizeurl'
+gem 'normalizeurl2025'
 ```
 
 And then execute:
@@ -20,29 +20,29 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install normalizeurl
+    $ gem install normalizeurl2025
 
 ## Usage
 
 ### Basic Usage
 
 ```ruby
-require 'normalizeurl'
+require 'normalizeurl2025'
 
 # Simple normalization
 url = "https://example.com/page?utm_source=google&utm_medium=cpc&id=123"
-normalized = Normalizeurl.normalize(url)
+normalized = Normalizeurl2025.normalize(url)
 # => "https://example.com/page?id=123"
 
 # Remove tracking parameters whilst preserving important ones
 youtube_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&utm_source=twitter&t=42"
-normalized = Normalizeurl.normalize(youtube_url)
+normalized = Normalizeurl2025.normalize(youtube_url)
 # => "https://youtube.com/watch?t=42&v=dQw4w9WgXcQ"
 ```
 
 ### Configuration Options
 
-NormalizeURL accepts various options to customize the normalization behaviour:
+NormalizeURL 2025 accepts various options to customize the normalization behaviour:
 
 ```ruby
 # Default options
@@ -56,7 +56,7 @@ options = {
   preserve_params: {}              # Domain-specific parameters to preserve
 }
 
-normalized = Normalizeurl.normalize(url, options)
+normalized = Normalizeurl2025.normalize(url, options)
 ```
 
 ### Examples
@@ -66,17 +66,17 @@ normalized = Normalizeurl.normalize(url, options)
 ```ruby
 # UTM parameters are removed
 url = "https://example.com/article?utm_source=newsletter&utm_campaign=spring2024&id=456"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://example.com/article?id=456"
 
 # Google Click ID and Facebook Click ID are removed
 url = "https://shop.example.com/product?gclid=abc123&fbclid=def456&product_id=789"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://shop.example.com/product?product_id=789"
 
 # Session IDs and tracking pixels are removed
 url = "https://site.com/page?PHPSESSID=abc123&_ga=GA1.2.123456&content=article"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://site.com/page?content=article"
 ```
 
@@ -85,17 +85,17 @@ Normalizeurl.normalize(url)
 ```ruby
 # YouTube video parameters are preserved
 url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&utm_source=email&t=120&list=PLxyz"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://youtube.com/watch?list=PLxyz&t=120&v=dQw4w9WgXcQ"
 
 # Amazon product parameters are preserved
 url = "https://amazon.com/dp/B08N5WRWNW?tag=mysite-20&utm_source=blog&keywords=ruby"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://amazon.com/dp/B08N5WRWNW?keywords=ruby&tag=mysite-20"
 
 # Search engine queries are preserved
 url = "https://google.com/search?q=ruby+gems&utm_source=referral&hl=en"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://google.com/search?q=ruby+gems"
 ```
 
@@ -104,27 +104,27 @@ Normalizeurl.normalize(url)
 ```ruby
 # Hostname is lowercased and www is optionally removed
 url = "HTTPS://WWW.EXAMPLE.COM/Path/?utm_source=email"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://www.example.com/Path"
 
 # Remove www prefix
 url = "https://www.example.com/page?id=123"
-Normalizeurl.normalize(url, remove_www: true)
+Normalizeurl2025.normalize(url, remove_www: true)
 # => "https://example.com/page?id=123"
 
 # Trailing slashes are removed (except root)
 url = "https://example.com/path/to/page/?utm_medium=social"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://example.com/path/to/page?utm_medium=social"
 
 # Fragments are removed by default
 url = "https://example.com/page#section?utm_source=twitter"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://example.com/page"
 
 # Keep fragments if needed
 url = "https://example.com/page#section?utm_source=twitter"
-Normalizeurl.normalize(url, remove_fragment: false)
+Normalizeurl2025.normalize(url, remove_fragment: false)
 # => "https://example.com/page#section"
 ```
 
@@ -133,7 +133,7 @@ Normalizeurl.normalize(url, remove_fragment: false)
 ```ruby
 # Parameters are sorted alphabetically for consistency
 url = "https://example.com/search?z=last&a=first&m=middle&utm_source=email"
-Normalizeurl.normalize(url)
+Normalizeurl2025.normalize(url)
 # => "https://example.com/search?a=first&m=middle&z=last"
 ```
 
@@ -145,7 +145,7 @@ options = {
   custom_tracking_params: ['my_tracker', 'internal_ref', 'campaign_id']
 }
 url = "https://example.com/page?my_tracker=abc&internal_ref=xyz&id=123&campaign_id=spring"
-Normalizeurl.normalize(url, options)
+Normalizeurl2025.normalize(url, options)
 # => "https://example.com/page?id=123"
 
 # Preserve custom parameters for specific domains
@@ -156,12 +156,12 @@ options = {
   }
 }
 url = "https://mysite.com/page?special_param=value&utm_source=email&user_pref=dark"
-Normalizeurl.normalize(url, options)
+Normalizeurl2025.normalize(url, options)
 # => "https://mysite.com/page?special_param=value&user_pref=dark"
 
 # Subdomain matching works automatically
 url = "https://blog.mysite.com/post?special_param=test&utm_campaign=launch"
-Normalizeurl.normalize(url, options)
+Normalizeurl2025.normalize(url, options)
 # => "https://blog.mysite.com/post?special_param=test"
 ```
 
@@ -169,11 +169,11 @@ Normalizeurl.normalize(url, options)
 
 ```ruby
 # Invalid URLs are returned unchanged
-Normalizeurl.normalize("not-a-url")
+Normalizeurl2025.normalize("not-a-url")
 # => "not-a-url"
 
 # Nil and empty strings return nil
-Normalizeurl.normalize(nil)
+Normalizeurl2025.normalize(nil)
 # => nil
 ```
 
@@ -181,7 +181,7 @@ Normalizeurl.normalize(nil)
 
 ### Tracking Parameters Removed
 
-NormalizeURL removes these common tracking parameters by default:
+NormalizeURL 2025 removes these common tracking parameters by default:
 
 **UTM Parameters:**
 - `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`
@@ -247,7 +247,7 @@ urls = [
   "https://example.com/page3?fbclid=def456"
 ]
 
-normalized_urls = urls.map { |url| Normalizeurl.normalize(url) }
+normalized_urls = urls.map { |url| Normalizeurl2025.normalize(url) }
 # => ["https://example.com/page1", "https://example.com/page2", "https://example.com/page3"]
 ```
 
@@ -255,7 +255,7 @@ normalized_urls = urls.map { |url| Normalizeurl.normalize(url) }
 
 ```ruby
 def cache_key_for_url(url)
-  normalized = Normalizeurl.normalize(url)
+  normalized = Normalizeurl2025.normalize(url)
   Digest::MD5.hexdigest(normalized)
 end
 
@@ -265,7 +265,7 @@ cache_key_for_url("https://example.com/article?utm_source=twitter&id=123")
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/peterc/normalizeurl.
+Bug reports and pull requests are welcome on GitHub at https://github.com/peterc/normalizeurl2025.
 
 ## Licence
 
